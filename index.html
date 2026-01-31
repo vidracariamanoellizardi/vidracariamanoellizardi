@@ -48,51 +48,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-        
-        // Rastrear cliques no WhatsApp
-        document.addEventListener('click', function(e) {
-            const link = e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href*="web.whatsapp.com"]');
-            if (link) {
-                gtag('event', 'whatsapp_click', {
-                    'event_category': 'contato',
-                    'event_label': link.textContent.trim() || 'WhatsApp',
-                    'value': 1
-                });
-            }
-        });
-        
-        // Rastrear cliques nos serviços
-        document.addEventListener('click', function(e) {
-            const servico = e.target.closest('.servico-card');
-            if (servico) {
-                const titulo = servico.querySelector('h3')?.textContent || 'Serviço';
-                gtag('event', 'servico_interesse', {
-                    'event_category': 'servicos',
-                    'event_label': titulo,
-                    'value': 1
-                });
-            }
-        });
-        
-        // Rastrear interação com vidro 3D
-        document.addEventListener('click', function(e) {
-            const glassBtn = e.target.closest('.glass-btn');
-            if (glassBtn) {
-                gtag('event', 'vidro_3d_selecionado', {
-                    'event_category': '3d_interativo',
-                    'event_label': glassBtn.dataset.glass || 'vidro',
-                    'value': 1
-                });
-            }
-        });
-    </script>
+   <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-41FE8EGYPN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-41FE8EGYPN');
+
+  // Rastrear cliques no WhatsApp
+  document.addEventListener('click', function(e) {
+      const link = e.target.closest(
+        'a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href*="web.whatsapp.com"]'
+      );
+      if (link) {
+          gtag('event', 'whatsapp_click', {
+              contact_type: 'whatsapp',
+              link_url: link.href,
+              link_text: link.textContent.trim() || 'WhatsApp'
+          });
+      }
+  });
+
+  // Rastrear cliques nos serviços
+  document.addEventListener('click', function(e) {
+      const servico = e.target.closest('.servico-card');
+      if (servico) {
+          const titulo = servico.querySelector('h3')?.textContent || 'Serviço';
+          gtag('event', 'servico_interesse', {
+              service_name: titulo
+          });
+      }
+  });
+
+  // Rastrear interação com vidro 3D
+  document.addEventListener('click', function(e) {
+      const glassBtn = e.target.closest('.glass-btn');
+      if (glassBtn) {
+          gtag('event', 'vidro_3d_selecionado', {
+              glass_type: glassBtn.dataset.glass || 'vidro'
+          });
+      }
+  });
+</script>
     
     <!-- Schema.org JSON-LD - Dados Estruturados para Google -->
     <script type="application/ld+json">
@@ -1322,6 +1320,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
